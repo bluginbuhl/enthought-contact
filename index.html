@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- EDIT: your name -->
+<title>Your Name · Enthought</title>
+<meta name="description" content="Contact details for Your Name at Enthought">
+<meta name="theme-color" content="#0F384D">
+<link rel="icon" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F384D;
+    --teal: #00767C;
+    --aqua: #5AB1BF;      /* light accent from the logomark */
+    --bg: #E9F0F2;
+    --paper: #FFFFFF;
+    --ink: #0F2633;
+    --muted: #55707C;
+    --line: #D5E1E5;
+    --link: #00767C;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #08202C;
+      --paper: #0F2E3E;
+      --ink: #EAF3F5;
+      --muted: #9DB8C2;
+      --line: #21485B;
+      --link: #5AB1BF;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 1rem/1.5 "Public Sans", system-ui, sans-serif;
+    display: grid;
+    place-items: center;
+    padding: max(24px, env(safe-area-inset-top)) 20px max(32px, env(safe-area-inset-bottom));
+  }
+  main { width: 100%; max-width: 440px; }
+
+  .card {
+    background: var(--paper);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(15,56,77,.08), 0 16px 40px -16px rgba(15,56,77,.35);
+  }
+
+  /* Navy band carrying the logomark */
+  .band {
+    position: relative;
+    height: 112px;
+    background: var(--navy);
+    overflow: hidden;
+  }
+  .band .mark {
+    position: absolute;
+    right: 22px; top: 22px;
+    width: 52px; height: 52px;
+    padding: 9px;
+    background: #fff;
+    border-radius: 12px;
+  }
+
+  .body { padding: 0 28px 28px; }
+  .photo {
+    width: 104px; height: 104px;
+    border-radius: 50%;
+    object-fit: cover; object-position: center 20%;
+    display: block;
+    margin-top: -52px;
+    position: relative;
+    border: 4px solid var(--paper);
+    background: var(--line);
+  }
+  h1 {
+    font-family: "Bricolage Grotesque", "Public Sans", sans-serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 8.5vw, 2.5rem);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    margin: 18px 0 8px;
+  }
+  .role { margin: 0; font-weight: 500; }
+  .org { margin: 0; color: var(--muted); }
+
+  ul { list-style: none; margin: 26px 0 0; padding: 0; border-top: 1px solid var(--line); }
+  li { border-bottom: 1px solid var(--line); }
+  li a {
+    display: flex; justify-content: space-between; gap: 16px;
+    padding: 14px 2px; color: var(--ink); text-decoration: none;
+  }
+  li a span:first-child { color: var(--muted); }
+  li a span:last-child { font-weight: 500; text-align: right; overflow-wrap: anywhere; }
+  li a:hover span:last-child { color: var(--link); }
+
+  .save {
+    display: block; width: 100%;
+    margin-top: 24px; padding: 16px;
+    border-radius: 10px;
+    background: var(--teal); color: #fff;
+    font: 600 1.05rem/1 "Public Sans", sans-serif;
+    text-align: center; text-decoration: none;
+  }
+  .save:hover { background: #00656A; }
+  a:focus-visible { outline: 3px solid var(--aqua); outline-offset: 3px; border-radius: 6px; }
+  .note { text-align: center; color: var(--muted); font-size: .85rem; margin: 14px 0 0; }
+</style>
+</head>
+<body>
+<main>
+  <article class="card">
+    <div class="band">
+      <img class="mark" src="logo.png" alt="Enthought">
+    </div>
+    <div class="body">
+      <img class="photo" src="photo.jpg" alt="">
+
+      <!-- EDIT: your details -->
+      <h1>Dr. Benjamin R. Luginbuhl</h1>
+      <p class="role">Sr. Scientific Software Developer | Materials Informatics</p>
+      <p class="org">Enthought, Inc.</p>
+
+      <ul>
+        <li><a href="tel:+15125361057"><span>Phone</span><span>+1 (512) 536-1057</span></a></li>
+        <li><a href="mailto:bluginbuhl@enthought.com"><span>Email</span><span>bluginbuhl@enthought.com</span></a></li>
+        <li><a href="https://www.linkedin.com/in/benluginbuhl"><span>LinkedIn</span><span>/in/benluginbuhl</span></a></li>
+        <li><a href="https://www.enthought.com"><span>Website</span><span>enthought.com</span></a></li>
+      </ul>
+
+      <a class="save" href="contact.vcf" download="Ben-Luginbuhl.vcf">Save contact</a>
+    </div>
+  </article>
+  <p class="note">Adds these details, with photo, to your phone's contacts.</p>
+</main>
+</body>
+</html>
