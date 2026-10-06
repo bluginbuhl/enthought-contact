@@ -24,6 +24,7 @@ OUTPUT = "qr_card.pdf"
 # -----------------------------------------------------------------------------
 
 NAVY, TEAL = HexColor("#0F384D"), HexColor("#00767C")
+ORANGE = HexColor("#FF7238")
 MUTED = HexColor("#55707C")
 
 if len(sys.argv) != 2:
@@ -66,6 +67,10 @@ c.setFont(DISPLAY, size)
 for i, line in enumerate(HEADLINE):
     c.drawCentredString(PAGE_W / 2, first_baseline - i * line_gap, line)
 
+# Orange accent stripe under the header band
+c.setFillColor(ORANGE)
+c.rect(0, PAGE_H - band_h - 0.06 * inch, PAGE_W, 0.06 * inch, stroke=0, fill=1)
+
 # Teal footer band
 foot_h = 0.5 * inch
 c.setFillColor(TEAL)
@@ -82,15 +87,21 @@ qr_top = PAGE_H - band_h - 0.42 * inch          # leaves a white quiet zone
 qr_y = qr_top - qr_size
 
 
-def in_finder(r, col):
-    return any(r0 <= r < r0 + 7 and c0 <= col < c0 + 7
-               for r0, c0 in [(0, 0), (0, n - 7), (n - 7, 0)])
+FINDERS = [(0, 0), (0, n - 7), (n - 7, 0)]
+
+
+def module_color(r, col):
+    """Finder eyes: teal ring, orange center. Everything else navy."""
+    for r0, c0 in FINDERS:
+        if r0 <= r < r0 + 7 and c0 <= col < c0 + 7:
+            return ORANGE if 2 <= r - r0 <= 4 and 2 <= col - c0 <= 4 else TEAL
+    return NAVY
 
 
 for r, row in enumerate(matrix):
     for col, on in enumerate(row):
         if on:
-            c.setFillColor(TEAL if in_finder(r, col) else NAVY)
+            c.setFillColor(module_color(r, col))
             # tiny overlap avoids hairline gaps between modules in some viewers
             c.rect(qr_x + col * mod, qr_top - (r + 1) * mod, mod + 0.05, mod + 0.05,
                    stroke=0, fill=1)

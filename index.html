@@ -37,6 +37,7 @@
     --navy: #0F384D;
     --teal: #00767C;
     --aqua: #5AB1BF;
+    --orange: #FF7238;    /* accent: decoration only, too light for text on white */
     --bg: #E9F0F2;
     --paper: #FFFFFF;
     --ink: #0F2633;
@@ -80,6 +81,7 @@
     position: relative;
     height: 112px;
     background: var(--navy);
+    border-bottom: 4px solid var(--orange);
     overflow: hidden;
   }
   .band .mark {
@@ -110,6 +112,14 @@
     letter-spacing: -0.02em;
     margin: 18px 0 8px;
   }
+  h1::after {
+    content: "";
+    display: block;
+    width: 44px; height: 4px;
+    margin-top: 12px;
+    border-radius: 2px;
+    background: var(--orange);
+  }
   .role { margin: 0; font-weight: 500; }
   .role2 { margin: 0; font-weight: 300; color: #55707C;}
   .org { margin: 0; color: var(--muted); }
@@ -133,7 +143,7 @@
     text-align: center; text-decoration: none;
   }
   .save:hover { background: #00656A; }
-  a:focus-visible { outline: 3px solid var(--aqua); outline-offset: 3px; border-radius: 6px; }
+  a:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 6px; }
   .note { text-align: center; color: var(--muted); font-size: .85rem; margin: 14px 0 0; }
 </style>
 </head>
