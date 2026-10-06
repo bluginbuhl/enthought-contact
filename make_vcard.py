@@ -2,7 +2,8 @@
 Build contact.vcf with your headshot embedded.
 Edit the fields below, then run:  python make_vcard.py
 """
-import base64, textwrap
+import base64
+import textwrap
 
 FIRST, LAST = "Ben", "Luginbuhl"
 TITLE   = "Sr. Scientific Software Developer - Materials Informatics"
@@ -11,6 +12,7 @@ PHONE   = "+15125361057"
 EMAIL   = "bluginbuhl@enthought.com"
 WEBSITE = "https://www.enthought.com"
 LINKEDIN = "https://www.linkedin.com/in/benluginbuhl"
+NOTE    = "Met at AMS Pittsburgh"
 PHOTO   = "photo.jpg"   # set to None to skip
 
 lines = [
@@ -19,6 +21,7 @@ lines = [
     f"ORG:{ORG}", f"TITLE:{TITLE}",
     f"TEL;TYPE=CELL:{PHONE}", f"EMAIL;TYPE=WORK:{EMAIL}",
     f"URL:{WEBSITE}", f"X-SOCIALPROFILE;TYPE=linkedin:{LINKEDIN}",
+    f"NOTE:{NOTE}",
 ]
 if PHOTO:
     b64 = base64.b64encode(open(PHOTO, "rb").read()).decode()
